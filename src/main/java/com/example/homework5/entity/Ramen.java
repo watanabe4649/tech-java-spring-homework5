@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class RamenResponse {
+public class Ramen {
 
     private final int id;
     private final String name;
