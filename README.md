@@ -69,6 +69,6 @@ Spring Boot, HTML, css, JavaScriptを駆使して、
 
 ### 3. フロントエンドからのアクセス
 次に、フロントエンドからAPI(`ramen/findAll`)にアクセスして、4つのラーメンのデータを取得します。
-
+ 
 処理は完全に任せますが、`index.html`にアクセスした際に、以下のような画面が表示されるように`index.html`と`App.js`を実装してください。
 ![image](https://github.com/user-attachments/assets/df7253e1-6e63-4de8-aa12-7090e7251339)
