@@ -12,7 +12,7 @@ function callRamenFindAll() {
 
         for (let i = 0; i < data.length; i++) {
             const p = document.createElement('p');
-            p.textContent = data[i].name;
+            p.textContent = `${data[i].shopName} ${data[i].name}`;
             ramenContainerElement.appendChild(p);
         }
     };
