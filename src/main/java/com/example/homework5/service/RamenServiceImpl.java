@@ -1,6 +1,7 @@
 package com.example.homework5.service;
 
 import com.example.homework5.entity.Ramen;
+import com.example.homework5.entity.RamenRequest;
 import com.example.homework5.repository.RamenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,5 +18,10 @@ public class RamenServiceImpl implements RamenService{
     @Override
     public List<Ramen> findAll() {
         return ramenRepository.findAll();
+    }
+
+    @Override
+    public void insert(RamenRequest ramenRequest){
+        ramenRepository.insert(ramenRequest.getName());
     }
 }

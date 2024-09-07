@@ -21,4 +21,26 @@ function callRamenFindAll() {
     request.send();
 }
 
+function postBtn() {
+    // フォームの値
+    var formDatas = document.getElementById('merchandiseName');
+    console.log(formDatas.value);
+    // HTTPリクエストの作成
+    const request = new XMLHttpRequest();
+    request.open('POST', 'http://localhost:8080/ramen/insert', true);
+    request.setRequestHeader("Content-Type", "application/json");
+
+    // 送信の処理(文字列をJSONに変換)
+    request.send(JSON.stringify(formDatas.value));
+
+    formDatas.value = '';
+}
+
+//index.htmlファイル開いたときに走る処理
 callRamenFindAll();
+
+// ボタン要素を取得
+const Btn = document.getElementById("post");
+
+// クリックイベントリスナーを設定
+Btn.addEventListener("click",postBtn);
