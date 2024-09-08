@@ -18,4 +18,9 @@ public class RamenServiceImpl implements RamenService{
     public List<Ramen> findAll() {
         return ramenRepository.findAll();
     }
+
+    @Override
+    public void insert(Ramen ramen) {
+        ramenRepository.insert(ramen.getName());
+    }
 }
