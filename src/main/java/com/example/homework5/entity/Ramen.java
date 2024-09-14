@@ -12,4 +12,5 @@ public class Ramen {
     private Integer id;
     private String name;
     private String shopName;
+    private int evaluation;
 }
