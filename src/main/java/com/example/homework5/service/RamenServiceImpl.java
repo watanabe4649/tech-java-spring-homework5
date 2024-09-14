@@ -21,6 +21,6 @@ public class RamenServiceImpl implements RamenService{
 
     @Override
     public void insert(Ramen ramen) {
-        ramenRepository.insert(ramen.getName());
+        ramenRepository.insert(ramen.getName(),ramen.getShop());
     }
 }

@@ -11,4 +11,5 @@ public class Ramen {
     @Id
     private Integer id;
     private String name;
+    private String shop;
 }

@@ -1,5 +1,5 @@
-INSERT INTO ramen_table(name) VALUES
-                                  ("家系"),
-                                  ("豚骨"),
-                                  ("醤油"),
-                                  ("味噌");
+INSERT INTO ramen_table(name,shop) VALUES
+                                  ("プレミアム塩とんこつ", "山岡家"),
+                                  ("醤油ネギラーメン", "山岡家"),
+                                  ("醤油ラーメン", "ラーメンショップ"),
+                                  ("味噌ラーメン", "ラーメンショップ");

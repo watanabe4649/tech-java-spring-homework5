@@ -1,13 +1,13 @@
 const ramenNameElement = document.getElementById('ramenName');
+const ramenShopElement = document.getElementById('ramenShop');
 const ramenPostButtonElement = document.getElementById('ramenPostButton');
 
 function postRamen() {
     // HTTPリクエストの作成
-
     ramen = {
-        name: ramenNameElement.value
+        name: ramenNameElement.value,
+        shop: ramenShopElement.value
     }
-
     const request = new XMLHttpRequest();
     request.open('POST', 'http://localhost:8080/ramen/insert', true);
     request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
