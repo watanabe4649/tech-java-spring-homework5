@@ -14,7 +14,7 @@ function postRamen() {
     ramen = {
         name: ramenNameElement.value,
         shopName: shopNameElement.value,
-        eval: eval
+        evaluation: eval
     }
 
     const request = new XMLHttpRequest();
