@@ -22,6 +22,5 @@ public class RamenController {
     @PostMapping("/insert")
     public void insert(@RequestBody Ramen ramen){
         ramenService.insert(ramen);
-        System.out.println(ramen);
     }
 }

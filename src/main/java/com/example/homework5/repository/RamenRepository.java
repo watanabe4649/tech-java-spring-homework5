@@ -14,6 +14,6 @@ public interface RamenRepository extends Repository<Ramen, Integer> {
     List<Ramen> findAll();
 
     @Modifying
-    @Query(value = "INSERT INTO ramen_table(name) VALUES (:name)")
-    void insert(@Param("name") String name);
+    @Query(value = "INSERT INTO ramen_table(name, shop_name) VALUES (:name, :shopName)")
+    void insert(@Param("name") String name, @Param("shopName") String shopName);
 }
