@@ -20,6 +20,18 @@ public class RamenServiceImpl implements RamenService{
     }
 
     @Override
+    public List<Ramen> findByFilter(int minEval, int maxEval) {
+        List<Ramen> ramenList = ramenRepository.findAll();
+        List<Ramen> filteredRamenList = new ArrayList<>();
+        for (Ramen ramen : ramenList) {
+            if (ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval) {
+                filteredRamenList.add(ramen);
+            }
+        }
+        return filteredRamenList;
+    }
+
+    @Override
     public void insert(Ramen ramen) {
         ramenRepository.insert(ramen.getName(), ramen.getShopName(), ramen.getEvaluation());
     }

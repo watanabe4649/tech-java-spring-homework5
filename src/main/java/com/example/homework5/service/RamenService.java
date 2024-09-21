@@ -8,5 +8,7 @@ public interface RamenService {
 
     List<Ramen> findAll();
 
+    List<Ramen> findByFilter(int minEval, int maxEval);
+
     void insert(Ramen ramen);
 }

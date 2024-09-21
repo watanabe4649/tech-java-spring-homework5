@@ -19,6 +19,14 @@ public class RamenController {
         return ramenService.findAll();
     }
 
+    @GetMapping("/findByFilter")
+    public List<Ramen> findByFilter(
+            @RequestParam(required = false, defaultValue = "0") int minEval,
+            @RequestParam(required = false, defaultValue = "5") int maxEval
+    ){
+        return ramenService.findByFilter(minEval, maxEval);
+    }
+
     @PostMapping("/insert")
     public void insert(@RequestBody Ramen ramen){
         ramenService.insert(ramen);

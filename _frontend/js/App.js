@@ -1,9 +1,9 @@
 const ramenWrapperElement = document.getElementById('ramen-wrapper');
 
-function callRamenFindAll() {
+function callRamenFindByFilter(minEval, maxEval) {
     // HTTPリクエストの作成
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/ramen/findAll', true);
+    request.open('GET', `http://localhost:8080/ramen/findByFilter?minEval=${minEval}&maxEval=${maxEval}`, true);
     request.responseType = 'json';
 
     // レスポンスを受け取った時の処理
@@ -24,7 +24,7 @@ function createRamenElement(ramen) {
     const container = document.createElement('div');
     container.classList.add('ramen-container');
     container.innerHTML = `
-        <p>${ramen.name}</p>
+        <p class="ramen-name">${ramen.name}</p>
         <p>店名: ${ramen.shopName}</p>
         <p>評価: ${"★".repeat(ramen.evaluation)}</p>
     `;
@@ -47,4 +47,13 @@ function createRamenElement(ramen) {
 //     return container;
 // }
 
-callRamenFindAll();
+
+// 現在のURLのクエリパラメータを取得
+const urlParams = new URLSearchParams(window.location.search);
+
+// minEvalがクエリパラメータに含まれているか確認
+let minEval = urlParams.get('minEval') || "";
+let maxEval = urlParams.get('maxEval') || "";
+
+
+callRamenFindByFilter(minEval, maxEval);
