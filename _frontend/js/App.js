@@ -24,9 +24,9 @@ function createRamenElement(ramen) {
     const container = document.createElement('div');
     container.classList.add('ramen-container');
     container.innerHTML = `
-        <p class="ramen-name">${ramen.name}</p>
-        <p class="shop-name">店名: ${ramen.shopName}</p>
-        <p class="eval">評価: ${"★".repeat(ramen.evaluation)}</p>
+        <p>${ramen.name}</p>
+        <p>店名: ${ramen.shopName}</p>
+        <p>評価: ${"★".repeat(ramen.evaluation)}</p>
     `;
     return container;
 }
@@ -36,11 +36,8 @@ function createRamenElement(ramen) {
 //     const container = document.createElement('div');
 //     container.classList.add('ramen-container');
 //     const ramenNameElement = document.createElement('p');
-//     ramenNameElement.classList.add('ramen-name');
 //     const shopNameElement = document.createElement('p');
-//     shopNameElement.classList.add('shop-name');
 //     const evalElement = document.createElement('p');
-//     evalElement.classList.add('eval');
 //     ramenNameElement.textContent = `${ramen.name}`;
 //     shopNameElement.textContent = `店名: ${ramen.shopName}`;
 //     evalElement.textContent = `評価: ${ramen.eval}`;

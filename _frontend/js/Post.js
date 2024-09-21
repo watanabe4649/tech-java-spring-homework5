@@ -11,7 +11,7 @@ function postRamen() {
     }
     eval = parseInt(eval);
 
-    ramen = {
+    const ramen = {
         name: ramenNameElement.value,
         shopName: shopNameElement.value,
         evaluation: eval
