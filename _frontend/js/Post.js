@@ -1,13 +1,20 @@
 const ramenNameElement = document.getElementById('ramenName');
 const shopNameElement = document.getElementById('shopName');
+const evalElement = document.getElementById('eval');
 const ramenPostButtonElement = document.getElementById('ramenPostButton');
 
 function postRamen() {
-    // HTTPリクエストの作成
+    let eval = evalElement.value;
+    if (eval === ""|| eval.includes(".")  ||eval < 1 || eval > 5) {
+        alert("評価は1から5の間の整数で入力してください。");
+        return;
+    }
+    eval = parseInt(eval);
 
-    ramen = {
+    const ramen = {
         name: ramenNameElement.value,
-        shopName: shopNameElement.value
+        shopName: shopNameElement.value,
+        evaluation: eval
     }
 
     const request = new XMLHttpRequest();
