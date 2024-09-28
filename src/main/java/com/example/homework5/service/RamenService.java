@@ -9,4 +9,6 @@ public interface RamenService {
     List<Ramen> findAll();
 
     void insert(Ramen ramen);
+
+    List<Ramen> findByFilter();
 }

@@ -16,4 +16,9 @@ public interface RamenRepository extends Repository<Ramen, Integer> {
     @Modifying
     @Query(value = "INSERT INTO ramen_table(name, shop_name, evaluation) VALUES (:name, :shopName, :evaluation)")
     void insert(@Param("name") String name, @Param("shopName") String shopName, @Param("evaluation") int evaluation);
+
+    //    @Query(value = "SELECT * FROM ramen_table WHERE evaluation >= :minEval AND evaluation <= :maxEval")
+    @Query(value = "SELECT * FROM ramen_table")
+//    List<Ramen> findByFilter(@Param("minEval") int minEval, @Param("maxEval") int maxEval);
+    List<Ramen> findByFilter();
 }

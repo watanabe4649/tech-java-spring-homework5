@@ -1,9 +1,13 @@
 const ramenWrapperElement = document.getElementById('ramen-wrapper');
 
+//function callRamenFindAll() {
 function callRamenFindAll() {
+    // URLのクエリパラメータを取得
+    const minMaxEval = window.location.search;
     // HTTPリクエストの作成
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/ramen/findAll', true);
+//    request.open('GET', 'http://localhost:8080/ramen/findAll', true);
+    request.open('GET', `http://localhost:8080/ramen/findByFilter${minMaxEval}`, true);
     request.responseType = 'json';
 
     // レスポンスを受け取った時の処理
@@ -24,7 +28,7 @@ function createRamenElement(ramen) {
     const container = document.createElement('div');
     container.classList.add('ramen-container');
     container.innerHTML = `
-        <p>${ramen.name}</p>
+        <p class="ramenName">${ramen.name}</p>
         <p>店名: ${ramen.shopName}</p>
         <p>評価: ${"★".repeat(ramen.evaluation)}</p>
     `;

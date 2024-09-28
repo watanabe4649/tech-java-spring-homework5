@@ -23,4 +23,10 @@ public class RamenServiceImpl implements RamenService{
     public void insert(Ramen ramen) {
         ramenRepository.insert(ramen.getName(), ramen.getShopName(), ramen.getEvaluation());
     }
+
+    @Override
+    public List<Ramen> findByFilter() {
+        return ramenRepository.findByFilter();
+    }
+
 }
