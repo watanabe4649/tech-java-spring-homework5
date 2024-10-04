@@ -2,6 +2,106 @@
 Spring Boot, HTML, css, JavaScriptを駆使して、
 ラーメンデータベースのようなモノを作っていきます。
 
+## 2024年10月5日
+
+### 1. ページネーションのテスト
+`findAll`のエンドポイントに対して、予めページネーションを実装しました。
+そのページネーションが正常に動作するか、postman等でテストし、レスポンスを確認してください。
+
+`data.sql`を見ると、50個のラーメンデータが登録されています。これを分けて取得するように実装しています。
+
+例えば、`/ramen/findAll?page=2`というリクエストを送ると、以下のようなレスポンスが返ってきます。
+page番号を0から9まで変化させてみて、レスポンスが変わる事も確かめてください。
+```json
+{
+  "content": [
+    {
+      "id": 11,
+      "name": "とても美味しいラーメン",
+      "shopName": "第三ラーメン",
+      "evaluation": 5
+    },
+    {
+      "id": 12,
+      "name": "美味しいラーメン",
+      "shopName": "第三ラーメン",
+      "evaluation": 4
+    },
+    {
+      "id": 13,
+      "name": "普通のラーメン",
+      "shopName": "第三ラーメン",
+      "evaluation": 3
+    },
+    {
+      "id": 14,
+      "name": "そこそこのラーメン",
+      "shopName": "第三ラーメン",
+      "evaluation": 2
+    },
+    {
+      "id": 15,
+      "name": "不味いラーメン",
+      "shopName": "第三ラーメン",
+      "evaluation": 1
+    }
+  ],
+  "pageable": {
+    "pageNumber": 2,
+    "pageSize": 5,
+    "sort": {
+      "empty": true,
+      "sorted": false,
+      "unsorted": true
+    },
+    "offset": 10,
+    "paged": true,
+    "unpaged": false
+  },
+  "last": false,
+  "totalElements": 50,
+  "totalPages": 10,
+  "size": 5,
+  "number": 2,
+  "sort": {
+    "empty": true,
+    "sorted": false,
+    "unsorted": true
+  },
+  "first": false,
+  "numberOfElements": 5,
+  "empty": false
+}
+```
+
+### 2. ソースコードの確認
+ページネーションの実装に関して、どのようなソースコードが書かれているか、確認してください。
+
+
+### 3. ページネーションの実装(フロントエンド)
+前回、フロントエンドから呼び出すエンドポイントを`findByFilter`に変更しましたが、
+一旦`findAll`に戻し、最初の5件が取得されるよう調整してください。
+
+次に、見た目は問いませんので、10ページの切り替え用に、、
+'index.html'のページ下部にページ番号選択ボタンを追加してください。
+
+最後に、番号選択ボタンを押すと、そのページのラーメンデータが表示されるようにしてください。
+以下画面構成の例です。
+
+![image](https://github.com/user-attachments/assets/628ec8e0-c1de-44c9-879c-47a72fe13b0b)
+
+
+### 4. ページネーションの実装(バックエンド)
+
+`findAll`のエンドポイントに対して実装されているページネーションを参考にして、
+`findByFilter`にもページネーションを実装してください。
+
+その後、フロントエンドから呼び出すエンドポイントを`findByFilter`に戻し、
+アクセスして正常に動作するか確認してください
+
+
+
+
 ## 2024年9月22日
 
 ### 1. スタイルの適用

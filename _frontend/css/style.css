@@ -1,11 +1,12 @@
 .ramen-container {
     background-color: #f5f5f5;
-    padding: 20px;
+    padding: 5px 20px;
     border-radius: 10px;
     margin-bottom: 20px;
 }
 
 .ramen-name {
+    margin: 10px 0;
     font-size: 24px;
     font-weight: bold;
 }

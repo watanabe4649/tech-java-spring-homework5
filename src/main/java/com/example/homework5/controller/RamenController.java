@@ -3,6 +3,8 @@ package com.example.homework5.controller;
 import com.example.homework5.entity.Ramen;
 import com.example.homework5.service.RamenService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +17,8 @@ public class RamenController {
     RamenService ramenService;
 
     @GetMapping("/findAll")
-    public List<Ramen> findAll(){
-        return ramenService.findAll();
+    public Page<Ramen> findAll(Pageable pageable){
+        return ramenService.findAll(pageable);
     }
 
     @GetMapping("/findByFilter")
