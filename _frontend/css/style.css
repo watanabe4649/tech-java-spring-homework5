@@ -10,3 +10,40 @@
     font-size: 24px;
     font-weight: bold;
 }
+
+
+/* ----- pagination ----- */
+.pagination {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+}
+.pagination-item-link {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    background: #fff;
+    border: solid 2px #111;
+    font-size: 14px;
+    color: #111;
+    font-weight: bold;
+    transition: all 0.15s linear;
+}
+
+.pagination-item-link.isActive {
+    background: #111;
+    color: #fff;
+    pointer-events: none;
+}
+.pagination-item-link:not(.isActive):hover {
+    background: #111;
+    color: #fff;
+}
+.pagination > * + * {
+    margin-left: 8px;
+}
