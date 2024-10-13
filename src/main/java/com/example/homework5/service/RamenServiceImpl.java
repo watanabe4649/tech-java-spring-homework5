@@ -5,6 +5,7 @@ import com.example.homework5.repository.RamenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,6 @@ public class RamenServiceImpl implements RamenService{
 
     @Override
     public Page<Ramen> findAll(Pageable pageable) {
-
         List<Ramen> ramenList = ramenRepository.findAll();
         int start = (int)pageable.getOffset();
         int end = Math.min((start + pageable.getPageSize()), ramenList.size());
@@ -33,7 +33,7 @@ public class RamenServiceImpl implements RamenService{
     }
 
     @Override
-    public List<Ramen> findByFilter(int minEval, int maxEval) {
+    public Page<Ramen> findByFilter(int page, int minEval, int maxEval) {
         List<Ramen> ramenList = ramenRepository.findAll();
         List<Ramen> filteredRamenList = new ArrayList<>();
         for (Ramen ramen : ramenList) {
@@ -41,7 +41,14 @@ public class RamenServiceImpl implements RamenService{
                 filteredRamenList.add(ramen);
             }
         }
-        return filteredRamenList;
+        // Pageableを設定
+        Pageable pageable =  PageRequest.of(page, 5);
+        // StartとEnd設定　getOffsetがよくわからない
+        int start = (int)pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), filteredRamenList.size());
+
+        // とりあえずPageImplに引数3つ渡す
+        return new PageImpl<>(filteredRamenList.subList(start, end), pageable, filteredRamenList.size());
     }
 
     @Override

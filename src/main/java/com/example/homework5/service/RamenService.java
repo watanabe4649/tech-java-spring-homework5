@@ -12,7 +12,7 @@ public interface RamenService {
 
     Page<Ramen> findAll(Pageable pageable);
 
-    List<Ramen> findByFilter(int minEval, int maxEval);
+    Page<Ramen> findByFilter(int page, int minEval, int maxEval);
 
     void insert(Ramen ramen);
 }

@@ -6,16 +6,16 @@ function callRamenFindByFilter() {
 
     // HTTPリクエストの作成
     const request = new XMLHttpRequest();
-    // request.open('GET', `http://localhost:8080/ramen/findByFilter${params}`, true);
-    request.open('GET', `http://localhost:8080/ramen/findAll${params}`, true);
+     request.open('GET', `http://localhost:8080/ramen/findByFilter${params}`, true);
+//    request.open('GET', `http://localhost:8080/ramen/findAll${params}`, true);
     request.responseType = 'json';
 
     // レスポンスを受け取った時の処理
     request.onload = function () {
         const data = this.response;
-
-        for (let i = 0; i < data.length; i++) {
-            const p = createRamenElement(data[i]);
+        console.log(data.content.length);
+        for (let i = 0; i < data.content.length; i++) {
+            const p = createRamenElement(data.content[i]);
             ramenWrapperElement.appendChild(p);
         }
     };
