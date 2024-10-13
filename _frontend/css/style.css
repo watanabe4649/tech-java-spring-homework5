@@ -18,6 +18,11 @@
     align-items: center;
     list-style-type: none;
 }
+.pagination-item-selected .pagination-item-link{
+    background: #555;
+    color: #fff;
+    pointer-events: none;
+}
 .pagination-item-link {
     width: 45px;
     height: 45px;
