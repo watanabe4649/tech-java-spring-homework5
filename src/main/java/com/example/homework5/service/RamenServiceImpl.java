@@ -45,6 +45,21 @@ public class RamenServiceImpl implements RamenService{
     }
 
     @Override
+    public Page<Ramen> findByFilter(int minEval, int maxEval, Pageable pageable) {
+        List<Ramen> ramenList = ramenRepository.findAll();
+        List<Ramen> filteredRamenList = new ArrayList<>();
+        for (Ramen ramen : ramenList) {
+            if (ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval) {
+                filteredRamenList.add(ramen);
+            }
+        }
+        int start = (int)pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), filteredRamenList.size());
+
+        return new PageImpl<>(filteredRamenList.subList(start, end), pageable, filteredRamenList.size());
+    }
+
+    @Override
     public void insert(Ramen ramen) {
         ramenRepository.insert(ramen.getName(), ramen.getShopName(), ramen.getEvaluation());
     }
