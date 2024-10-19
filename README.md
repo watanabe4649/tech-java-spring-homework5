@@ -2,6 +2,61 @@
 Spring Boot, HTML, css, JavaScriptを駆使して、
 ラーメンデータベースのようなモノを作っていきます。
 
+
+## 2024年10月20日
+
+### 1. フィルターの演習
+
+以下のメソッド`List<Ramen> findByFilter`をreturn文から始まる1文の処理だけに書き換えてください。
+
+```java
+@Override
+public List<Ramen> findByFilter(int minEval, int maxEval) {
+    List<Ramen> ramenList = ramenRepository.findAll();
+    List<Ramen> filteredRamenList = new ArrayList<>();
+    for (Ramen ramen : ramenList) {
+        if (ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval) {
+            filteredRamenList.add(ramen);
+        }
+    }
+    return filteredRamenList;
+}
+```
+
+`Page<Ramen> findByFilter`も、1行は無理ですが、for文無しで書き換えてみてください。
+
+```java
+@Override
+public Page<Ramen> findByFilter(int minEval, int maxEval, Pageable pageable) {
+    List<Ramen> ramenList = ramenRepository.findAll();
+    List<Ramen> filteredRamenList = new ArrayList<>();
+    for (Ramen ramen : ramenList) {
+        if (ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval) {
+            filteredRamenList.add(ramen);
+        }
+    }
+    int start = (int)pageable.getOffset();
+    int end = Math.min((start + pageable.getPageSize()), filteredRamenList.size());
+    
+    return new PageImpl<>(filteredRamenList.subList(start, end), pageable, filteredRamenList.size());
+}
+```
+
+### 2. 検索ボックスの追加
+ページ上部に最小評価と最大評価を入力するボックスを作成し、検索ができるようにします。
+
+以下の画像のレイアウトに限りなく寄せてください。
+
+ページネーションに関しても、上部と下部の2箇所に配置されるようにし、どちらも機能するようにしてください。
+
+![image](https://github.com/user-attachments/assets/b3003e30-5137-45eb-9876-a34bc77ed659)
+
+### 3. 検索ボックスの機能実装
+検索ボックスに最小評価と最大評価を入力し、検索ボタンを押すと、その範囲内のラーメンが表示されるようにしてください。
+
+ページ遷移を行った際も、検索ボックスに入力された値が維持されるようにしてください。
+
+
 ## 2024年10月14日
 
 ### 1. パラメータの維持
