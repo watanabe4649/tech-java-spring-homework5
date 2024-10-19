@@ -7,6 +7,7 @@ function callRamenFindByFilter() {
 //URLのキーminEval取得できない
 //const minEval = urlParams.get('minEval');
 console.log(urlParams.get('minEval'))
+console.log(urlParams.get('minEval'))
 
     // HTTPリクエストの作成
     const request = new XMLHttpRequest();
