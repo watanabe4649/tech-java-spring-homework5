@@ -4,42 +4,21 @@
     <meta charset="UTF-8">
     <title>ラーメン一覧</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+<div class="search-container">
+    <label for="search-input-max" class="search-label">最小評価</label>
+    <input type="number" class="search-input" id="search-input-max" placeholder="5">
+    <label for="search-input-min" class="search-label">最大評価</label>
+    <input type="number" class="search-input" id="search-input-min" placeholder="1">
+    <button class="search-button">
+        <i class="fas fa-search"></i> 検索
+    </button>
+</div>
+<ul class="pagination" id="pagination-top"></ul>
 <div id="ramen-wrapper"></div>
-
-<ul class="pagination" id="pagination">
-<!--    <li class="pagination-item">-->
-<!--        <a class="pagination-item-link" href="?page=0"><span>1</span></a>-->
-<!--    </li>-->
-<!--    <li class="pagination-item">-->
-<!--        <a class="pagination-item-link" href="?page=1"><span>2</span></a>-->
-<!--    </li>-->
-<!--    <li class="pagination-item">-->
-<!--        <a class="pagination-item-link" href="?page=2"><span>3</span></a>-->
-<!--    </li>-->
-<!--    <li class="pagination-item">-->
-<!--        <a class="pagination-item-link" href="?page=3"><span>4</span></a>-->
-<!--    </li>-->
-<!--    <li class="pagination-item">-->
-<!--        <a class="pagination-item-link" href="?page=4"><span>5</span></a>-->
-<!--    </li>-->
-<!--    <li class="pagination-item">-->
-<!--        <a class="pagination-item-link" href="?page=5"><span>6</span></a>-->
-<!--    </li>-->
-<!--    <li class="pagination-item">-->
-<!--        <a class="pagination-item-link" href="?page=6"><span>7</span></a>-->
-<!--    </li>-->
-<!--    <li class="pagination-item">-->
-<!--        <a class="pagination-item-link" href="?page=7"><span>8</span></a>-->
-<!--    </li>-->
-<!--    <li class="pagination-item">-->
-<!--        <a class="pagination-item-link" href="?page=8"><span>9</span></a>-->
-<!--    </li>-->
-<!--    <li class="pagination-item">-->
-<!--        <a class="pagination-item-link" href="?page=9"><span>10</span></a>-->
-<!--    </li>-->
-</ul>
+<ul class="pagination" id="pagination-bottom"></ul>
 
 <a href="post.html">ラーメンを追加</a>
 <script src="js/App.js"></script>

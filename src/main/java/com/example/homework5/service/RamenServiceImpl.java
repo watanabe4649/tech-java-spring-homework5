@@ -34,25 +34,26 @@ public class RamenServiceImpl implements RamenService{
 
     @Override
     public List<Ramen> findByFilter(int minEval, int maxEval) {
-        List<Ramen> ramenList = ramenRepository.findAll();
-        List<Ramen> filteredRamenList = new ArrayList<>();
-        for (Ramen ramen : ramenList) {
-            if (ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval) {
-                filteredRamenList.add(ramen);
-            }
-        }
-        return filteredRamenList;
+//        List<Ramen> ramenList = ramenRepository.findAll();
+//        List<Ramen> filteredRamenList = new ArrayList<>();
+//        for (Ramen ramen : ramenList) {
+//            if (ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval) {
+//                filteredRamenList.add(ramen);
+//            }
+//        }
+//        return filteredRamenList;
+
+        return ramenRepository.findAll().stream()
+                .filter(ramen -> ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval)
+                .toList();
     }
 
     @Override
     public Page<Ramen> findByFilter(int minEval, int maxEval, Pageable pageable) {
-        List<Ramen> ramenList = ramenRepository.findAll();
-        List<Ramen> filteredRamenList = new ArrayList<>();
-        for (Ramen ramen : ramenList) {
-            if (ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval) {
-                filteredRamenList.add(ramen);
-            }
-        }
+        List<Ramen> filteredRamenList = ramenRepository.findAll().stream()
+                .filter(ramen -> ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval)
+                .toList();
+
         int start = (int)pageable.getOffset();
         int end = Math.min((start + pageable.getPageSize()), filteredRamenList.size());
 
