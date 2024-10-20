@@ -12,12 +12,19 @@ function callRamenFindByFilter() {
 
     // レスポンスを受け取った時の処理
     request.onload = function () {
-        const content = this.response.content;
+        const response = this.response;
+        const totalPages = response.totalPages;
+        const currentPage = response.number;
 
+        console.log(response);
+
+        const content = response.content;
         for (let i = 0; i < content.length; i++) {
             const p = createRamenElement(content[i]);
             ramenWrapperElement.appendChild(p);
         }
+
+        createPagination(totalPages, currentPage);
     };
 
     // リクエストの送信
@@ -33,6 +40,36 @@ function createRamenElement(ramen) {
         <p>評価: ${"★".repeat(ramen.evaluation)}</p>
     `;
     return container;
+}
+
+function createPagination(totalPages, currentPage) {
+    const paginationElement = document.getElementById('pagination');
+    for (let i = 0; i < totalPages; i++) {
+        const selected = i === currentPage
+        const paginationItem = createPaginationItemElement(i, selected);
+        paginationElement.appendChild(paginationItem);
+    }
+
+}
+
+function createPaginationItemElement(pageNumber, selected = false) {
+    const item = document.createElement('li');
+    item.classList.add('pagination-item');
+    if (selected) {
+        item.classList.add('pagination-item-selected');
+    }
+
+    // 現在のURLのクエリパラメータを取得
+    const url = new URL(window.location);
+    const params = url.searchParams;
+
+    // pageパラメータを更新
+    params.set('page', pageNumber);
+
+    item.innerHTML = `
+        <a class="pagination-item-link" href="?${params}"><span>${pageNumber + 1}</span></a>
+    `;
+    return item;
 }
 
 callRamenFindByFilter();
