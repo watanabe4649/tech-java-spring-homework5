@@ -23,11 +23,12 @@ public class RamenController {
 
     @GetMapping("/findByFilter")
     public Page<Ramen> findByFilter(
+            @RequestParam(required = false, defaultValue = "") String keyword,
             @RequestParam(required = false, defaultValue = "0") int minEval,
             @RequestParam(required = false, defaultValue = "5") int maxEval,
             Pageable pageable
     ){
-        return ramenService.findByFilter(minEval, maxEval, pageable);
+        return ramenService.findByFilter(keyword, minEval, maxEval, pageable);
     }
 
     @PostMapping("/insert")
