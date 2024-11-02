@@ -74,4 +74,15 @@ function createPaginationItemElement(pageNumber, selected = false) {
     return item;
 }
 
+
+
+const urlParams = new URLSearchParams(window.location.search);
+
+const minEval = urlParams.get('minEval');
+const maxEval = urlParams.get('maxEval');
+
+document.getElementById('search-input-min').value = minEval;
+document.getElementById('search-input-max').value = maxEval;
+
+
 callRamenFindByFilter();
