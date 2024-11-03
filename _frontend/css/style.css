@@ -10,6 +10,12 @@
     font-size: 24px;
     font-weight: bold;
 }
+/* ----- 最小最大レイアウト----- */
+
+
+.example {
+	text-align: right;
+}
 
 
 /* ----- pagination ----- */

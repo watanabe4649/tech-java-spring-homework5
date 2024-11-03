@@ -7,9 +7,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class RamenServiceImpl implements RamenService{
@@ -34,29 +35,40 @@ public class RamenServiceImpl implements RamenService{
 
     @Override
     public List<Ramen> findByFilter(int minEval, int maxEval) {
-        List<Ramen> ramenList = ramenRepository.findAll();
-        List<Ramen> filteredRamenList = new ArrayList<>();
-        for (Ramen ramen : ramenList) {
+//        List<Ramen> ramenList = ramenRepository.findAll();
+//        List<Ramen> filteredRamenList = new ArrayList<>();
+//        for (Ramen ramen : ramenList) {
+//            if (ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval) {
+//                filteredRamenList.add(ramen);
+//            }
+//        }
+        return ramenRepository.findAll().stream().filter(ramen -> {
             if (ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval) {
-                filteredRamenList.add(ramen);
+//                 filteredRamenList.add(ramen);
             }
-        }
-        return filteredRamenList;
+            return false;
+        }).toList();
     }
 
     @Override
     public Page<Ramen> findByFilter(int minEval, int maxEval, Pageable pageable) {
-        List<Ramen> ramenList = ramenRepository.findAll();
-        List<Ramen> filteredRamenList = new ArrayList<>();
-        for (Ramen ramen : ramenList) {
+//        List<Ramen> ramenList = ramenRepository.findAll();
+//        List<Ramen> filteredRamenList = new ArrayList<>();
+//        for (Ramen ramen : ramenList) {
+//            if (ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval) {
+//                filteredRamenList.add(ramen);
+//            }
+//        }
+        List<Ramen> ramenList = new ArrayList<>();
+         ramenRepository.findAll().forEach(ramen -> {
             if (ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval) {
-                filteredRamenList.add(ramen);
+                ramenList.add(ramen);
             }
-        }
+        });
         int start = (int)pageable.getOffset();
-        int end = Math.min((start + pageable.getPageSize()), filteredRamenList.size());
+        int end = Math.min((start + pageable.getPageSize()), ramenList.size());
 
-        return new PageImpl<>(filteredRamenList.subList(start, end), pageable, filteredRamenList.size());
+        return new PageImpl<>(ramenList.subList(start, end), pageable, ramenList.size());
     }
 
     @Override

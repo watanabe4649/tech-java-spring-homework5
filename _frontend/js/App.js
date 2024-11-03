@@ -72,4 +72,37 @@ function createPaginationItemElement(pageNumber, selected = false) {
     return item;
 }
 
+// Btn 押した時の処理を書く
+function searchBtn(){
+    // URLのクエリパラメータを取得
+
+//console.log(params)
+
+    const num1 = parseFloat(document.getElementById("num1").value);
+    const num2 = parseFloat(document.getElementById("num2").value);
+
+    const num3 = "?minEval=" +num1
+    const num4 = "?maxEval=" +num2
+    console.log(num1);
+    console.log(num4);
+
+
+        const params = num3;
+            console.log(params);
+    // HTTPリクエストの作成
+    const request = new XMLHttpRequest();
+    request.open('GET', `http://localhost:8080/ramen/findByFilter${params}`, true);
+    // request.open('GET', `http://localhost:8080/ramen/findAll${params}`, true);
+    request.responseType = 'json';
+
+
+
+    // リクエストの送信
+    request.send();
+
+}
+
+
+
 callRamenFindByFilter();
+document.getElementById("button2").addEventListener("click", searchBtn);
