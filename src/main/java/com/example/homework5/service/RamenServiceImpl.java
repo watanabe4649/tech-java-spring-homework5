@@ -49,9 +49,11 @@ public class RamenServiceImpl implements RamenService{
     }
 
     @Override
-    public Page<Ramen> findByFilter(int minEval, int maxEval, Pageable pageable) {
+    public Page<Ramen> findByFilter(String keyword, int minEval, int maxEval, Pageable pageable) {
         List<Ramen> filteredRamenList = ramenRepository.findAll().stream()
                 .filter(ramen -> ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval)
+                // filterなぜか1行にまとめられない
+                .filter(ramen -> ramen.getShopName().equals(keyword) || ramen.getName().equals(keyword))
                 .toList();
 
         int start = (int)pageable.getOffset();

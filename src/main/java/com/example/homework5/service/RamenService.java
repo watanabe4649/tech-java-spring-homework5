@@ -14,7 +14,7 @@ public interface RamenService {
 
     List<Ramen> findByFilter(int minEval, int maxEval);
 
-    Page<Ramen> findByFilter(int minEval, int maxEval, Pageable pageable);
+    Page<Ramen> findByFilter(String keyword,int minEval, int maxEval, Pageable pageable);
 
     void insert(Ramen ramen);
 }

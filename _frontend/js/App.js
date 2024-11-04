@@ -78,9 +78,11 @@ function createPaginationItemElement(pageNumber, selected = false) {
 
 const urlParams = new URLSearchParams(window.location.search);
 
+const keyword = urlParams.get('keyword');
 const minEval = urlParams.get('minEval');
 const maxEval = urlParams.get('maxEval');
 
+document.getElementById('search-input-keyword').value = keyword;
 document.getElementById('search-input-min').value = minEval;
 document.getElementById('search-input-max').value = maxEval;
 
