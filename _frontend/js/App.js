@@ -43,11 +43,13 @@ function createRamenElement(ramen) {
 }
 
 function createPagination(totalPages, currentPage) {
-    const paginationElement = document.getElementById('pagination');
+    const paginationTopElement = document.getElementById('pagination-top');
+    const paginationBottomElement = document.getElementById('pagination-bottom');
     for (let i = 0; i < totalPages; i++) {
         const selected = i === currentPage
         const paginationItem = createPaginationItemElement(i, selected);
-        paginationElement.appendChild(paginationItem);
+        paginationTopElement.appendChild(paginationItem.cloneNode(true));
+        paginationBottomElement.appendChild(paginationItem.cloneNode(true));
     }
 
 }
@@ -71,5 +73,16 @@ function createPaginationItemElement(pageNumber, selected = false) {
     `;
     return item;
 }
+
+
+
+const urlParams = new URLSearchParams(window.location.search);
+
+const minEval = urlParams.get('minEval');
+const maxEval = urlParams.get('maxEval');
+
+document.getElementById('search-input-min').value = minEval;
+document.getElementById('search-input-max').value = maxEval;
+
 
 callRamenFindByFilter();
