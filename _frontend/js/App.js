@@ -77,28 +77,34 @@ function searchBtn(){
     // URLのクエリパラメータを取得
 
 //console.log(params)
+//
+//    const num1 = parseFloat(document.getElementById("num1").value);
+//    const num2 = parseFloat(document.getElementById("num2").value);
+//
+//    const num3 = "?minEval=" +num1
+//    const num4 = "&maxEval=" +num2
+//    console.log(num1);
+//    console.log(num4);
+//
+//
+//        const params = num3+num4;
+//            console.log(params);
+//    // HTTPリクエストの作成
+//    const request = new XMLHttpRequest();
+//    request.open('GET', `http://localhost:8080/ramen/findByFilter${params}`, true);
+//    // request.open('GET', `http://localhost:8080/ramen/findAll${params}`, true);
+//    request.responseType = 'json';
 
-    const num1 = parseFloat(document.getElementById("num1").value);
-    const num2 = parseFloat(document.getElementById("num2").value);
+    // 現在のURLのクエリパラメータを取得
+    const url = new URL(window.location);
+    const params = url.searchParams;
 
-    const num3 = "?minEval=" +num1
-    const num4 = "?maxEval=" +num2
-    console.log(num1);
-    console.log(num4);
-
-
-        const params = num3;
-            console.log(params);
-    // HTTPリクエストの作成
-    const request = new XMLHttpRequest();
-    request.open('GET', `http://localhost:8080/ramen/findByFilter${params}`, true);
-    // request.open('GET', `http://localhost:8080/ramen/findAll${params}`, true);
-    request.responseType = 'json';
+    // pageパラメータを更新
+    params.set('minEval', document.getElementById("num1").value);
+    params.set('maxEval', document.getElementById("num2").value);
 
 
-
-    // リクエストの送信
-    request.send();
+    window.location.href =`${params}`;
 
 }
 

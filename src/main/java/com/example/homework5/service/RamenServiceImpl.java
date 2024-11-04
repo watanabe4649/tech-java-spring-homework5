@@ -42,12 +42,13 @@ public class RamenServiceImpl implements RamenService{
 //                filteredRamenList.add(ramen);
 //            }
 //        }
-        return ramenRepository.findAll().stream().filter(ramen -> {
-            if (ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval) {
-//                 filteredRamenList.add(ramen);
-            }
-            return false;
-        }).toList();
+        return ramenRepository.findAll().stream()
+                .filter(ramen -> ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval)
+                .toList();
+//            ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval)
+//                return true;
+//
+//        }.toList();
     }
 
     @Override
