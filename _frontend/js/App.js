@@ -80,9 +80,20 @@ const urlParams = new URLSearchParams(window.location.search);
 
 const minEval = urlParams.get('minEval');
 const maxEval = urlParams.get('maxEval');
+const keyword = urlParams.get('keyword');
 
+// if (minEval) {
+//     document.getElementById('search-input-min').value = minEval;
+// }
+// if (maxEval) {
+//     document.getElementById('search-input-max').value = maxEval;
+// }
+// if (keyword) {
+//     document.getElementById('search-input-keyword').value = keyword;
+// }
 document.getElementById('search-input-min').value = minEval;
 document.getElementById('search-input-max').value = maxEval;
+document.getElementById('search-input-keyword').value = keyword;
 
 
 callRamenFindByFilter();
