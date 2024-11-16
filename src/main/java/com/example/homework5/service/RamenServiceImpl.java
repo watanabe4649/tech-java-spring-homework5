@@ -41,6 +41,7 @@ public class RamenServiceImpl implements RamenService{
 
     @Override
     public Page<Ramen> findByFilter(String keyword, int minEval, int maxEval, Pageable pageable) {
+
         List<Ramen> filteredRamenList = ramenRepository.findAll().stream()
                 .filter(ramen -> ramen.getName().contains(keyword) || ramen.getShopName().contains(keyword))
                 .filter(ramen -> ramen.getEvaluation() >= minEval && ramen.getEvaluation() <= maxEval)

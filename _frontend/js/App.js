@@ -12,7 +12,16 @@ function callRamenFindByFilter() {
 
     // レスポンスを受け取った時の処理
     request.onload = function () {
+        //えらーのとき
+        int status = this.status;
         const response = this.response;
+
+        if(status !== 200){
+            alert(response.);
+        }
+
+
+        // 200
         const totalPages = response.totalPages;
         const currentPage = response.number;
 
@@ -25,6 +34,7 @@ function callRamenFindByFilter() {
         }
 
         createPagination(totalPages, currentPage);
+
     };
 
     // リクエストの送信
