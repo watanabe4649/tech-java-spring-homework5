@@ -13,10 +13,15 @@ function callRamenFindByFilter() {
     // レスポンスを受け取った時の処理
     request.onload = function () {
         const response = this.response;
+        const status = this.status;
+        if (status !== 200) {
+            console.log(response)
+            alert(response.error + '\n' + response.message);
+            return;
+        }
+
         const totalPages = response.totalPages;
         const currentPage = response.number;
-
-        console.log(response);
 
         const content = response.content;
         for (let i = 0; i < content.length; i++) {
@@ -82,15 +87,6 @@ const minEval = urlParams.get('minEval');
 const maxEval = urlParams.get('maxEval');
 const keyword = urlParams.get('keyword');
 
-// if (minEval) {
-//     document.getElementById('search-input-min').value = minEval;
-// }
-// if (maxEval) {
-//     document.getElementById('search-input-max').value = maxEval;
-// }
-// if (keyword) {
-//     document.getElementById('search-input-keyword').value = keyword;
-// }
 document.getElementById('search-input-min').value = minEval;
 document.getElementById('search-input-max').value = maxEval;
 document.getElementById('search-input-keyword').value = keyword;
