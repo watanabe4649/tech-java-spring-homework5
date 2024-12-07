@@ -3,14 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>ラーメンを追加</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<h1>ラーメンを追加</h1>
+<form id="ramenForm">
+    <label for="ramenName">商品名</label>
+    <input type="text" id="ramenName" placeholder="商品名" required>
 
-<input type="text" id="ramenName" placeholder="商品名">
-<input type="text" id="shopName" placeholder="店名">
-<input type="number" id="eval" placeholder="評価(1～5)">
-<button id="ramenPostButton">投稿</button>
+    <label for="shopName">店名</label>
+    <input type="text" id="shopName" placeholder="店名" required>
 
+    <label for="eval">評価</label>
+    <div id="starRating">
+        <span class="eval-star" data-value="1">★</span>
+        <span class="eval-star" data-value="2">★</span>
+        <span class="eval-star" data-value="3">★</span>
+        <span class="eval-star" data-value="4">★</span>
+        <span class="eval-star" data-value="5">★</span>
+    </div>
+    <input type="hidden" id="eval" name="eval">
+
+    <button type="submit" id="ramenPostButton">投稿</button>
+</form>
 <p><a href="index.html">トップに戻る</a></p>
 <script src="js/Post.js"></script>
 </body>

@@ -31,3 +31,36 @@ function postRamen() {
 }
 
 ramenPostButtonElement.addEventListener('click', postRamen);
+
+
+
+const stars = document.querySelectorAll("#starRating .eval-star");
+const evalInput = document.getElementById("eval");
+
+stars.forEach(star => {
+    star.addEventListener("click", () => {
+        // Remove selected class from all stars
+        stars.forEach(s => s.classList.remove("selected"));
+
+        // Add selected class to clicked star and all previous ones
+        star.classList.add("selected");
+        let value = star.getAttribute("data-value");
+        evalInput.value = value;
+
+        // Highlight all previous stars
+        for (let i = 0; i < value; i++) {
+            stars[i].classList.add("selected");
+        }
+    });
+
+    star.addEventListener("mouseover", () => {
+        let value = star.getAttribute("data-value");
+        for (let i = 0; i < value; i++) {
+            stars[i].classList.add("hover");
+        }
+    });
+
+    star.addEventListener("mouseout", () => {
+        stars.forEach(s => s.classList.remove("hover"));
+    });
+});
