@@ -12,7 +12,7 @@ Spring Boot, HTML, css, JavaScriptを駆使して、
 - `BadRequestException`(既存)  
   リクエストパラメータの値の形式に異常がある場合に投げる例外。  
   今回では、評価がマイナスの値である場合に投げる例外とする。
-- `UnporocessableEntityException`  
+- `UnprocessableEntityException`  
   リクエストパラメータの値の形式は正常だが、ロジック上の問題がある場合に投げる例外。例えば、
   今回は、minとmaxの大小関係が逆転している場合に投げる例外とする。
 
@@ -22,7 +22,7 @@ Spring Boot, HTML, css, JavaScriptを駆使して、
 
 - `NotFoundException`: 404  
 - `BadRequestException`: 400  
-- `UnporocessableEntityException`: 422  
+- `UnprocessableEntityException`: 422  
 
 ### 3. 例外処理の追加(フロントエンド)
 現状では、エラーが発生した際に、アラートでエラーメッセージが表示されます。  

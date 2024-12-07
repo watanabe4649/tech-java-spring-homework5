@@ -2,6 +2,8 @@ package com.example.homework5.controller;
 
 import com.example.homework5.entity.Ramen;
 import com.example.homework5.exception.BadRequestException;
+import com.example.homework5.exception.NotFoundException;
+import com.example.homework5.exception.UnprocessableEntityException;
 import com.example.homework5.service.RamenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -32,6 +33,12 @@ public class RamenController {
             @RequestParam(required = false, defaultValue = "5") int maxEval,
             Pageable pageable
     ){
+
+//        if(Strings.isEmpty(keyword)){
+//            throw new NotFoundException("見つかりませんでした" );
+//        }
+
+
         // 入力バリデーション
         if (minEval < 0) {
             throw new BadRequestException("最小評価は1以上で入力してください。");
@@ -40,10 +47,15 @@ public class RamenController {
             throw new BadRequestException("最大評価は5以下で入力してください。");
         }
         if (minEval > maxEval) {
-            throw new BadRequestException("最小評価は最大評価以下で入力してください。");
+            throw new UnprocessableEntityException("最小評価は最大評価以下で入力してください。");
         }
 
-        return ramenService.findByFilter(keyword, minEval, maxEval, pageable);
+        Page<Ramen> ramen =ramenService.findByFilter(keyword, minEval, maxEval, pageable);
+
+        if(ramen.getTotalElements() == 0){
+            throw new NotFoundException("該当するラーメンが見つかりませんでした" );
+        }
+        return ramen;
     }
 
 //    @GetMapping("/findByFilter")
@@ -74,5 +86,22 @@ public class RamenController {
         Map<String, String> errorResponse = new HashMap<>();
         errorResponse.put("error", e.getMessage());
         return ResponseEntity.badRequest().body(errorResponse);
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    // jsファイルにステータス渡している？
+    // handleNotFoundExceptionを書くと500になる
+    public ResponseEntity<?> handleBadRequestException(NotFoundException e) {
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("error", e.getMessage());
+        return ResponseEntity.notFound().build();
+    }
+
+    @ExceptionHandler(UnprocessableEntityException.class)
+    // jsファイルにステータス渡している？
+    public ResponseEntity<?> handleBadRequestException(UnprocessableEntityException e) {
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("error", e.getMessage());
+        return ResponseEntity.unprocessableEntity().body(errorResponse);
     }
 }
