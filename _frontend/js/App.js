@@ -14,9 +14,19 @@ function callRamenFindByFilter() {
     request.onload = function () {
         const response = this.response;
         const status = this.status;
-        if (status !== 200) {
-            console.log(response)
-            alert(response.error + '\n' + response.message);
+        if (status === 400 || status === 422) {
+            alert(response.error);
+            // フォーム内の全ての入力要素を取得
+            document.querySelectorAll('.search-container input').forEach(input => {
+                input.value = '';
+                console.log(input)
+            });
+            return;
+        }else if(status === 404){
+            alert("該当するラーメンが見つかりませんでした。");
+            return;
+        }else if(status !== 200){
+            alert(response.error);
             return;
         }
 
