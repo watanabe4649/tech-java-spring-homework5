@@ -90,7 +90,6 @@ public class RamenController {
 
     @ExceptionHandler(NotFoundException.class)
     // jsファイルにステータス渡している？
-    // handleNotFoundExceptionを書くと500になる
     public ResponseEntity<?> handleBadRequestException(NotFoundException e) {
         Map<String, String> errorResponse = new HashMap<>();
         errorResponse.put("error", e.getMessage());

@@ -2,6 +2,7 @@ const ramenWrapperElement = document.getElementById('ramen-wrapper');
 const ramenKeywordElement = document.getElementById('search-input-keyword');
 const ramenMaxElement = document.getElementById('search-input-max');
 const ramenMinElement = document.getElementById('search-input-min');
+const searchInputElements = document.querySelectAll('.search-container input');
 
 
 function callRamenFindByFilter() {
@@ -18,7 +19,7 @@ function callRamenFindByFilter() {
     request.onload = function () {
         const response = this.response;
         const status = this.status;
-        if (status == 404) {
+        if (status === 404) {
             console.log(response)
             alert('error' + '\n' + '該当するラーメンが見つかりませんでした');
             return;
@@ -27,9 +28,12 @@ function callRamenFindByFilter() {
             console.log(response)
             alert(response.error + '\n' + response.message);
             // 入力値をクリア
-            ramenKeywordElement.value = "";
-            ramenMaxElement.value = 5;
-            ramenMinElement.value = 1;
+//            ramenKeywordElement.value = "";
+//            ramenMaxElement.value = 5;
+//            ramenMinElement.value = 1;
+            searchInputElements.forEach( e =>{
+                e.value = "";
+            })
             return;
         }
 
