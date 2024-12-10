@@ -34,7 +34,7 @@ ramenPostButtonElement.addEventListener('click', postRamen);
 
 
 
-const stars = document.querySelectorAll("#starRating .eval-star");
+const stars = document.querySelectorAll("#starContainer .eval-star");
 const evalInput = document.getElementById("eval");
 
 stars.forEach(star => {

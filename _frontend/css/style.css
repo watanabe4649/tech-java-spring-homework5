@@ -106,25 +106,25 @@
 
 
 /*--- post ---*/
-form {
+.ramen-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-label {
+.ramen-form label {
     font-weight: bold;
     color: #555;
 }
 
-input[type="text"] {
+.ramen-form input[type="text"] {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
 }
 
-#starRating {
+.star-container {
     display: flex;
     gap: 5px;
 }
