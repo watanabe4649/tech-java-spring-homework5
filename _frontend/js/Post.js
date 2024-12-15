@@ -31,3 +31,33 @@ function postRamen() {
 }
 
 ramenPostButtonElement.addEventListener('click', postRamen);
+
+
+
+const stars = document.querySelectorAll("#starContainer .eval-star");
+const evalInput = document.getElementById("eval");
+
+stars.forEach(star => {
+    star.addEventListener("click", () => {
+        stars.forEach(s => s.classList.remove("selected"));
+
+        star.classList.add("selected");
+        let value = star.getAttribute("data-value");
+        evalInput.value = value;
+
+        for (let i = 0; i < value; i++) {
+            stars[i].classList.add("selected");
+        }
+    });
+
+    star.addEventListener("mouseover", () => {
+        let value = star.getAttribute("data-value");
+        for (let i = 0; i < value; i++) {
+            stars[i].classList.add("hover");
+        }
+    });
+
+    star.addEventListener("mouseout", () => {
+        stars.forEach(s => s.classList.remove("hover"));
+    });
+});
