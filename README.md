@@ -2,6 +2,34 @@
 Spring Boot, HTML, css, JavaScriptを駆使して、
 ラーメンデータベースのようなモノを作っていきます。
 
+
+## 2025年2月23日
+
+今回はwebサイトの模写の練習です。
+
+完成系のwebサイトをサーバーにアップロードしました。  
+以下のサイトを開き、開発者ツールを活用しながら模写を行ってください。
+
+https://steady-crostata-9360e3.netlify.app/
+
+### 0. 完成系
+
+![Image](https://github.com/user-attachments/assets/d5a4ca0a-ee87-42b4-ab96-91270f8be81d)
+
+### 1. html, cssの模写
+JavaScriptは不要です。見た目だけ完全に寄せてください。
+
+ファイルは`_frontend`内に`ramenDB.html`と`css/ramenDB.css`として作成してください。
+
+
+### 2. JavaScriptの模写
+バックエンドとの連携を行います。  
+
+最高評価店舗一覧に評価5のラーメン5つを、その下の★4,3,2の店舗も取得するようにしてください。
+
+今回は登録日時等記録していないため、評価さえ合っていれば順序は適当でOKです。
+
+
 ## 2024年12月8日
 
 ### 0. 完成形
