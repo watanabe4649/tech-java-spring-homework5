@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ラーメンデータベース風データベース</title>
+    <link rel="stylesheet" href="css/ramenDB.css">
+
+</head>
+<body>
+<header>
+    <h1>ラーメンデータベース風データベース</h1>
+    <nav>
+        <ul>
+            <li><a href="#">トップ</a></li>
+            <li><a href="#">検索</a></li>
+            <li><a href="#">ランキング</a></li>
+            <li><a href="#">昨日の一杯</a></li>
+            <li><a href="#">イベント特集</a></li>
+            <li><a href="#">ニュース</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="search">
+        <input type="text" placeholder="キーワードを入力">
+        <button>お店を検索</button>
+    </section>
+
+    <section class="ranking">
+        <h2>最高評価店舗一覧</h2>
+        <div class="ramen-list" id="ramenList">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>ロード中...</p>
+            </div>
+<!--            <div class="ramen-item">-->
+<!--                <img src="https://illust8.com/wp-content/uploads/2020/03/shouyu-ramen_7547.png" alt="ラーメン1">-->
+<!--                <p class="ramen-item-ramen-name">1. とても美味しいラーメン</p>-->
+<!--                <p class="ramen-item-shop-name">第一ラーメン</p>-->
+<!--            </div>-->
+<!--            <div class="ramen-item">-->
+<!--                <img src="https://illust8.com/wp-content/uploads/2020/03/shouyu-ramen_7547.png" alt="ラーメン2">-->
+<!--                <p class="ramen-item-ramen-name">2. とても美味しいラーメン</p>-->
+<!--                <p class="ramen-item-shop-name">第二ラーメン</p>-->
+<!--            </div>-->
+<!--            <div class="ramen-item">-->
+<!--                <img src="https://illust8.com/wp-content/uploads/2020/03/shouyu-ramen_7547.png" alt="ラーメン3">-->
+<!--                <p class="ramen-item-ramen-name">3. とても美味しいラーメン</p>-->
+<!--                <p class="ramen-item-shop-name">第三ラーメン</p>-->
+<!--            </div>-->
+<!--            <div class="ramen-item">-->
+<!--                <img src="https://illust8.com/wp-content/uploads/2020/03/shouyu-ramen_7547.png" alt="ラーメン4">-->
+<!--                <p class="ramen-item-ramen-name">4. とても美味しいラーメン</p>-->
+<!--                <p class="ramen-item-shop-name">第四ラーメン</p>-->
+<!--            </div>-->
+<!--            <div class="ramen-item">-->
+<!--                <img src="https://illust8.com/wp-content/uploads/2020/03/shouyu-ramen_7547.png" alt="ラーメン5">-->
+<!--                <p class="ramen-item-ramen-name">5. とても美味しいラーメン</p>-->
+<!--                <p class="ramen-item-shop-name">第五ラーメン</p>-->
+<!--            </div>-->
+        </div>
+    </section>
+
+    <section class="new-stores">
+        <div class="store-category">
+            <h3>新着 ★4店舗</h3>
+            <ul id="storeEval4">
+<!--                <li>美味しいラーメン - 第一ラーメン</li>-->
+<!--                <li>美味しいラーメン - 第二ラーメン</li>-->
+<!--                <li>美味しいラーメン - 第三ラーメン</li>-->
+<!--                <li>美味しいラーメン - 第四ラーメン</li>-->
+            </ul>
+        </div>
+        <div class="store-category">
+            <h3>新着 ★3店舗</h3>
+            <ul id="storeEval3">
+<!--                <li>普通のラーメン - 第一ラーメン</li>-->
+<!--                <li>普通のラーメン - 第二ラーメン</li>-->
+<!--                <li>普通のラーメン - 第三ラーメン</li>-->
+<!--                <li>普通のラーメン - 第四ラーメン</li>-->
+            </ul>
+        </div>
+        <div class="store-category">
+            <h3>新着 ★2店舗</h3>
+            <ul id="storeEval2">
+<!--                <li>そこそこのラーメン - 第一ラーメン</li>-->
+<!--                <li>そこそこのラーメン - 第二ラーメン</li>-->
+<!--                <li>そこそこのラーメン - 第三ラーメン</li>-->
+<!--                <li>そこそこのラーメン - 第四ラーメン</li>-->
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 ラーメンデータベース風データベース</p>
+</footer>
+<script src="js/RamenDB.js"></script>
+</body>
+</html>
